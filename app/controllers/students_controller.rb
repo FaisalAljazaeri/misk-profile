@@ -28,6 +28,22 @@ class StudentsController < ApplicationController
         end
     end
 
+    def new
+        # Render the 'new' view and pass it a new Student object
+        @student = Student.new
+    end
+
+    def create
+        # Create a new Student object using the data submitted by the 'new' form
+        @student = Student.new(student_params)
+
+        if @student.save(student_params)
+            redirect_to @student
+        else
+            redirect_to :new
+        end
+    end
+
     private
         def find_student
             # Find student by id from the params
