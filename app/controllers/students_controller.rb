@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
     # Find student by ID and save it in @student, for the actions that require it
-    before_action :find_student, only: [:show, :edit, :update]
+    before_action :find_student, only: [:show, :edit, :update, :destroy]
 
     def index
         # Render 'index' view and pass it all students
@@ -42,6 +42,14 @@ class StudentsController < ApplicationController
         else
             redirect_to :new
         end
+    end
+
+    def destroy
+        # Delete the student found by ID from the DB
+        @student.delete
+
+        # After the delete redirect to the 'index' view
+        redirect_to students_path
     end
 
     private
