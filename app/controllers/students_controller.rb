@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
     # Find student by ID and save it in @student, for the actions that require it
-    before_action :find_student, only: [:show]
+    before_action :find_student, only: [:show, :edit]
 
     def index
         # Render 'index' view and pass it all students
@@ -10,6 +10,11 @@ class StudentsController < ApplicationController
     def show
         # Render 'show' view and send it @student found by id
         @student 
+    end
+
+    def edit
+        # Render 'edit' view and send it @student found by id
+        @student
     end
 
     private
