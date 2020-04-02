@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
     # Find student by ID and save it in @student, for the actions that require it
-    before_action :find_student, only: [:show, :edit]
+    before_action :find_student, only: [:show, :edit, :update]
 
     def index
         # Render 'index' view and pass it all students
@@ -17,9 +17,25 @@ class StudentsController < ApplicationController
         @student
     end
 
+    def update
+        # Update the student record with the information form the submitted 'edit' form
+        if @student.update(student_params)
+            # If the update was successfull and saved in the DB, redirect to the student 'show'
+            redirect_to @student
+        else
+            # In case the update operation wasn't successful, render the 'edit' form again
+            render :edit
+        end
+    end
+
     private
         def find_student
             # Find student by id from the params
             @student = Student.find(params[:id])
+        end
+
+        def student_params
+            # Select which parameters of the student model are permitted to be changed
+            params.require(:student).permit(:first_name, :last_name, :img)
         end
 end
