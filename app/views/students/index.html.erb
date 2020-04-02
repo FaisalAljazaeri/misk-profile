@@ -1,0 +1,15 @@
+<% @students.each do |student| %>
+    <div>
+        <%= image_tag student.img, size: '50', alt: student.first_name %>
+    </div>
+
+    <div>
+        First Name: <%= student.first_name %>
+    </div>
+
+    <div>
+        Last Name: <%= student.last_name %>
+    </div>
+
+    <hr>
+<% end %>
