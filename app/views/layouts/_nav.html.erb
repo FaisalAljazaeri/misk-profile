@@ -1,0 +1,36 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">MISK-Profile</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <%= link_to 'Home', students_path, class: 'nav-link' %>
+                </li>
+
+                <% if student_signed_in? %>
+                <li class="nav-item active">
+                    <%= link_to 'Sign Out', destroy_student_session_path, method: :delete, class: 'nav-link' %>
+                </li>
+                <li class="nav-item active">
+                    <%= link_to 'My Account', edit_student_registration_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item active">
+                    <%= link_to 'My Profile', edit_student_path(:id => current_student.id), class: 'nav-link' %>
+                </li>
+                <% else %>
+                <li class="nav-item active">
+                    <%= link_to 'Sign Up', new_student_registration_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item active">
+                    <%= link_to 'Sign In', new_student_session_path, class: 'nav-link' %>
+                </li>
+                <% end %>
+
+            </ul>
+        </div>
+    </nav>
+</header>
