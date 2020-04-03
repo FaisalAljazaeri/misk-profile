@@ -56,7 +56,7 @@ class StudentsController < ApplicationController
         # Check if the logged-in student is authorized before rendering the view
         check_authroization
         
-        puts @student.skills.find(params[:skill_id]).delete
+        @student.skills.delete(Skill.find(params[:skill_id]))
     end
 
     private
