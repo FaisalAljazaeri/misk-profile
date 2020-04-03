@@ -11,7 +11,7 @@
         <h1>Avilable Skills</h1>
 
         <% @unselected_skills.each do |skill| %>
-            <p> <%= skill.name %> <%= link_to 'Add', '#' %> </p> 
+            <p> <%= skill.name %> <%= link_to 'Add', add_student_skill_path(:skill_id => skill.id), method: :patch %> </p>
         <% end %>
     </div>
 </div>

@@ -1,8 +1,8 @@
 class StudentsController < ApplicationController
     # Check if a Student is authenticated before these actions
-    before_action :authenticate_student!, only: [:edit, :update, :skills]
+    before_action :authenticate_student!, only: [:edit, :update, :skills, :remove_skill, :add_skill]
     # Find student by ID and save it in @student, for the actions that require it
-    before_action :find_student, only: [:show, :edit, :update, :destroy, :skills, :remove_skill]
+    before_action :find_student, only: [:show, :edit, :update, :destroy, :skills, :remove_skill, :add_skill]
 
     def index
         # Render 'index' view and pass it all students
@@ -49,7 +49,7 @@ class StudentsController < ApplicationController
         # Find a student's selected skills
         @selected_skills = @student.skills
         # Find all skills that aren't selected by the student
-        @unselected_skills = Skill.unselected_by(@student)
+        @unselected_skills = Skill.all.select { |skill| !@student.skills.include?(skill) }
     end
 
     def remove_skill
@@ -57,6 +57,14 @@ class StudentsController < ApplicationController
         check_authroization
         
         @student.skills.delete(Skill.find(params[:skill_id]))
+    end
+
+    def add_skill
+        # Check if the logged-in student is authorized before rendering the view
+        check_authroization
+
+        # Add Skill by ID to the current student
+        StudentSkill.create(student_id: @student.id, skill_id: params[:skill_id])
     end
 
     private

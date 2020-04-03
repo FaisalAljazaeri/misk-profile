@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   patch 'students/:id', to: 'students#update'
   get 'students/:id/skills', to: 'students#skills', as: :student_skills
   delete 'students/:id/skills', to: 'students#remove_skill', as: :remove_student_skill
+  patch 'students/:id/skills', to: 'students#add_skill', as: :add_student_skill
 
   # root path will go to index action on students controller
   root "students#index"
