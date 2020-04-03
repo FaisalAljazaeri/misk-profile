@@ -15,6 +15,8 @@
         <ul>
           <% if student_signed_in? %>
             <li> <%= link_to 'Sign Out', destroy_student_session_path, method: :delete %> </li>
+            <li> <%= link_to 'My Account', edit_student_registration_path %> </li>
+            <li> <%= link_to 'My Profile', edit_student_path(:id => current_student.id) %> </li>
           <% else %>
             <li> <%= link_to 'Sign Up', new_student_registration_path %> </li>
             <li> <%= link_to 'Sign In', new_student_session_path %> </li>

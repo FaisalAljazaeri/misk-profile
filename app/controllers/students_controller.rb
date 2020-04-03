@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+    # Check if a Student is authenticated before these actions
+    before_action :authenticate_student!, only: [:edit, :update]
     # Find student by ID and save it in @student, for the actions that require it
     before_action :find_student, only: [:show, :edit, :update, :destroy]
 
@@ -13,6 +15,13 @@ class StudentsController < ApplicationController
     end
 
     def edit
+        # If the student opens an edit form for an ID that doesn't mathch their ID, 
+        # they will be redirected 'index' and dispalyed flah message 'Not Authorized!'
+        if current_student != @student
+            flash[:notice] = 'Not Authorized!'
+            redirect_to students_path
+        end
+
         # Render 'edit' view and send it @student found by id
         @student
     end
