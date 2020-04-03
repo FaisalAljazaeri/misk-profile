@@ -4,11 +4,11 @@
     </div>
 
     <div>
-        First Name: <%= student.first_name %>
+        Full Name: <%= student.first_name %> <%= student.last_name %>
     </div>
 
     <div>
-        Last Name: <%= student.last_name %>
+        Skills: <%= student.skills.map { |skill| skill.name }.join(', ') %>.
     </div>
 
     <%= link_to 'View Profile', student %>
