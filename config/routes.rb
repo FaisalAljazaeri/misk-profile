@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'students/:id', to: 'students#show', as: :student
   get 'students/:id/edit', to: 'students#edit', as: :edit_student
   patch 'students/:id', to: 'students#update'
+  get 'students/:id/skills', to: 'students#skills'
 
   # root path will go to index action on students controller
   root "students#index"

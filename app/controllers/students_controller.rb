@@ -1,8 +1,8 @@
 class StudentsController < ApplicationController
     # Check if a Student is authenticated before these actions
-    before_action :authenticate_student!, only: [:edit, :update]
+    before_action :authenticate_student!, only: [:edit, :update, :skills]
     # Find student by ID and save it in @student, for the actions that require it
-    before_action :find_student, only: [:show, :edit, :update, :destroy]
+    before_action :find_student, only: [:show, :edit, :update, :destroy, :skills]
 
     def index
         # Render 'index' view and pass it all students
@@ -15,12 +15,8 @@ class StudentsController < ApplicationController
     end
 
     def edit
-        # If the student opens an edit form for an ID that doesn't mathch their ID, 
-        # they will be redirected 'index' and dispalyed flah message 'Not Authorized!'
-        if current_student != @student
-            flash[:notice] = 'Not Authorized!'
-            redirect_to students_path
-        end
+        # Check if the logged-in student is authorized before rendering the view
+        check_authroization
 
         # Render 'edit' view and send it @student found by id
         @student
@@ -45,6 +41,17 @@ class StudentsController < ApplicationController
         redirect_to students_path
     end
 
+    # Renders a view where a student can add/remove skills from their profile
+    def skills
+        # Check if the logged-in student is authorized before rendering the view
+        check_authroization
+
+        # Find a student's selected skills
+        @selected_skills = @student.skills
+        # Find all skills that aren't selected by the student
+        @unselected_skills = Skill.unselected_by(@student)
+    end
+
     private
         def find_student
             # Find student by id from the params
@@ -54,5 +61,14 @@ class StudentsController < ApplicationController
         def student_params
             # Select which parameters of the student model are permitted to be changed
             params.require(:student).permit(:first_name, :last_name, :img)
+        end
+
+        def check_authroization
+            # If a logged-in student go to a route that they don't have an autherization for, 
+            # they will be redirected to the root path and dispalyed flah message 'Not Authorized!'
+            if current_student != @student
+                flash[:notice] = 'Not Authorized!'
+                redirect_to root_path
+            end
         end
 end

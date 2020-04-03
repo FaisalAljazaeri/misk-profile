@@ -1,0 +1,15 @@
+<div>
+    <h1>My Skills</h1>
+
+    <% @selected_skills.each do |skill| %>
+        <p> <%= skill.name %> </p>
+    <% end %>
+</div>
+
+<div>
+    <h1>Avilable Skills</h1>
+
+    <% @unselected_skills.each do |skill| %>
+        <p> <%= skill.name %> </p>
+    <% end %>
+</div>
