@@ -6,12 +6,27 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-students = [
-    { first_name: 'Faisal', last_name: 'Aljazaeri', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuIseEQRShUfAqkdaB_cI0AJe95RnZXia5YMToFAQAOeLoIBqm&usqp=CAU'},
-    { first_name: 'John', last_name: 'Doe', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuIseEQRShUfAqkdaB_cI0AJe95RnZXia5YMToFAQAOeLoIBqm&usqp=CAU'},
-    { first_name: 'Jane', last_name: 'Doe', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuIseEQRShUfAqkdaB_cI0AJe95RnZXia5YMToFAQAOeLoIBqm&usqp=CAU'},
-    { first_name: 'Omar', last_name: 'Alharbi', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuIseEQRShUfAqkdaB_cI0AJe95RnZXia5YMToFAQAOeLoIBqm&usqp=CAU'},
-    { first_name: 'Ahmed', last_name: 'Albokhari', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuIseEQRShUfAqkdaB_cI0AJe95RnZXia5YMToFAQAOeLoIBqm&usqp=CAU'},
+
+courses = [ 
+    { title: 'Software Engineering Immersive', abbreviation: 'SEI' },
+    { title: 'Data Science Immersive', abbreviation: 'DSI' },
+    { title: 'User Experience Design Immersive', abbreviation: 'UXDI' },
 ]
 
-Student.create(students)
+Course.create(courses)
+
+skills = [
+    { name: 'HTML' },
+    { name: 'CSS' },
+    { name: 'JavaScript' },
+    { name: 'JQuery' },
+    { name: 'MongoDB' },
+    { name: 'Express' },
+    { name: 'SQL' },
+    { name: 'PostgreSQL' },
+    { name: 'Ruby' },
+    { name: 'React' },
+    { name: 'Git' }
+]
+
+Skill.create(skills)
