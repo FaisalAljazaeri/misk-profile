@@ -13,8 +13,17 @@
   <%= render 'layouts/nav' %>
 
   <div class="container-fluid">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice.present? %>
+        <div class="notice alert alert-success">
+          <%= notice %>
+        </div>
+      <% end %>
+      
+      <% if alert.present? %>
+        <div class="alert alert-danger">
+          <%= alert %>
+        </div>
+      <% end %>
 
       <%= yield %>
   </div>

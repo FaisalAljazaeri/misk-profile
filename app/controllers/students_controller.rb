@@ -82,7 +82,7 @@ class StudentsController < ApplicationController
             # If a logged-in student go to a route that they don't have an autherization for, 
             # they will be redirected to the root path and dispalyed flah message 'Not Authorized!'
             if current_student != @student
-                flash[:notice] = 'Not Authorized!'
+                flash[:alert] = 'Not Authorized!'
                 redirect_to root_path
             end
         end
