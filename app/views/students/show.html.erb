@@ -18,6 +18,18 @@
     Summary: <p> <%= @student.summary %> </p>
 <div>
 
+<div>
+    Projects:
+    <% @student.projects.each do |project| %>
+        <div>
+            <h4> <%= project.name %> </h4>
+            <p> <%= project.description %> </p>
+            <%= image_tag project.img, size: '120', alt: project.name, :target => '_blank' %>
+            <%= link_to "Check it out!", project.link, target: "_blank" %>
+        <div>
+    <% end %>
+<div>
+
 <%= link_to 'Back to All Students', students_path %>
 
 <hr>
