@@ -7,4 +7,5 @@ class Student < ApplicationRecord
   has_many :student_skills
   has_many :skills, through: :student_skills
   belongs_to :course
+  has_many :projects
 end
