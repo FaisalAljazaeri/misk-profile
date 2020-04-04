@@ -8,6 +8,10 @@
     </div>
 
     <div>
+        Course: <%= student.course.title %>.
+    </div>
+
+    <div>
         Skills: <%= student.skills.map { |skill| skill.name }.join(', ') %>.
     </div>
 

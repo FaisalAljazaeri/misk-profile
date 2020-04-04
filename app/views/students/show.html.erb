@@ -7,8 +7,16 @@
 </div>
 
 <div>
+    Course: <%= @student.course.title %>.
+</div>
+
+<div>
     Skills: <%= @student.skills.map { |skill| skill.name }.join(', ') %>.
 </div>
+
+<div>
+    Summary: <p> <%= @student.summary %> </p>
+<div>
 
 <%= link_to 'Back to All Students', students_path %>
 
