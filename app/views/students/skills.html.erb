@@ -1,17 +1,17 @@
 <div class="row">
-    <div class="col border">
+    <div class="col border" id="student-skills">
         <h1>My Skills</h1>
 
         <% @selected_skills.each do |skill| %>
-            <p> <%= skill.name %> <%= link_to 'Remove', remove_student_skill_path(:skill_id => skill.id), method: :delete %> </p>
+            <p> <%= skill.name %> <%= link_to 'Remove', remove_student_skill_path(:skill_id => skill.id), method: :delete, remote: true, class: 'remove-skill' %> </p>
         <% end %>
     </div>
 
-    <div class="col border">
+    <div class="col border" id="available-skills">
         <h1>Avilable Skills</h1>
 
         <% @unselected_skills.each do |skill| %>
-            <p> <%= skill.name %> <%= link_to 'Add', add_student_skill_path(:skill_id => skill.id), method: :patch %> </p>
+            <p> <%= skill.name %> <%= link_to 'Add', add_student_skill_path(:skill_id => skill.id), method: :patch, remote: true, class: 'add-skill' %> </p>
         <% end %>
     </div>
 </div>
