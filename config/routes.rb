@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'projects', to: 'projects#index', as: :projects
   get 'projects/new', to: 'projects#new', as: :new_project
   post 'projects', to: 'projects#create'
+  get 'projects/:id', to: 'projects#show', as: :project
 
   # root path will go to index action on students controller
   root "students#index"
