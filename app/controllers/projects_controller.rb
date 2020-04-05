@@ -1,12 +1,12 @@
 class ProjectsController < ApplicationController
     # Make sure that the Student is Signed-in before exceuting the selected actions
-    before_action :authenticate_student!, only:[:index, :show, :edit]
+    before_action :authenticate_student!, only:[:index, :show, :edit, :destroy]
 
     # Find a Project by the ID from params, before executing any of the specified actions
-    before_action :find_project, only: [:show, :edit, :update]
+    before_action :find_project, only: [:show, :edit, :update, :destroy]
 
     # Make sure that the Student is authorized before the specified actions
-    before_action :check_authroization, only: [:show, :edit]
+    before_action :check_authroization, only: [:show, :edit, :update, :destroy]
 
     def index
         # Render view 'index' and pass it list of all projects for the current student
@@ -51,6 +51,14 @@ class ProjectsController < ApplicationController
 
         # Redirect to the Project 'show' view
         redirect_to @project
+    end
+
+    def destroy
+        # Delete the Project found by ID from the DB
+        @project.destroy
+
+        # After the Project is deleted, redirect to projects 'index'
+        redirect_to projects_path
     end
 
     private

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'projects/:id', to: 'projects#show', as: :project
   get 'projects/:id/edit', to: 'projects#edit', as: :edit_project
   patch 'projects/:id', to: 'projects#update'
+  delete 'projects/:id', to: 'projects#destroy', as: :destroy_project
 
   # root path will go to index action on students controller
   root "students#index"
