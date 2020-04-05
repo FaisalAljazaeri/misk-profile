@@ -1,23 +1,23 @@
 <%= form_with model: @project, local: true do |form| %>
-<div>
-    <%= form.label :name, 'Project Name:' %><br />
-    <%= form.text_field :name %>
+<div class="form-group">
+    <%= form.label :name, 'Project Name' %>
+    <%= form.text_field :name, class: 'form-control' %>
 </div>
 
-<div>
-    <%= form.label :description, 'Project Description:' %><br />
-    <%= form.text_area :description, cols: 50, rows: 7 %>
+<div class="form-group">
+    <%= form.label :description, 'Project Description' %>
+    <%= form.text_area :description, cols: 50, rows: 7, class: 'form-control' %>
 </div>
 
-<div>
-    <%= form.label :img, 'Project Image:' %><br />
-    <%= form.text_field :img %>
+<div class="form-group">
+    <%= form.label :img, 'Project Image' %>
+    <%= form.text_field :img, class: 'form-control' %>
 </div>
 
-<div>
-    <%= form.label :link, 'Project Link' %><br />
-    <%= form.text_field :link %>
+<div class="form-group">
+    <%= form.label :link, 'Project Link' %>
+    <%= form.text_field :link, class: 'form-control' %>
 </div>
 
-<%= form.submit %>
+<%= form.submit 'Create Project', class: 'btn btn-primary' %>
 <% end %>
