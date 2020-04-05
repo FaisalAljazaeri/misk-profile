@@ -1,3 +1,36 @@
 // Place all the styles related to the students controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.skills-section {
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 100%;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+    height: 10px;
+    display: block;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #ffffff;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+    background-color: #666;
+    border: 1px solid #eee;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
