@@ -14,5 +14,10 @@
         <%= form.text_field :img %>
     </p>
 
+    <p>
+        <%= form.label :summary, 'Summary:' %>
+        <%= form.text_area :summary, cols: 50, rows: 7 %>
+    </p>
+
     <%= form.submit %>
 <% end %>
