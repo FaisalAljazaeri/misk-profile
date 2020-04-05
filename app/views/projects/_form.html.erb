@@ -1,0 +1,23 @@
+<%= form_with model: @project, local: true do |form| %>
+<div>
+    <%= form.label :name, 'Project Name:' %><br />
+    <%= form.text_field :name %>
+</div>
+
+<div>
+    <%= form.label :description, 'Project Description:' %><br />
+    <%= form.text_area :description, cols: 50, rows: 7 %>
+</div>
+
+<div>
+    <%= form.label :img, 'Project Image:' %><br />
+    <%= form.text_field :img %>
+</div>
+
+<div>
+    <%= form.label :link, 'Project Link' %><br />
+    <%= form.text_field :link %>
+</div>
+
+<%= form.submit %>
+<% end %>
