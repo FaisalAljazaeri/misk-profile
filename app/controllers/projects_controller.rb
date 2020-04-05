@@ -1,12 +1,12 @@
 class ProjectsController < ApplicationController
     # Make sure that the Student is Signed-in before exceuting the selected actions
-    before_action :authenticate_student!, only:[:index]
+    before_action :authenticate_student!, only:[:index, :show, :edit]
 
     # Find a Project by the ID from params, before executing any of the specified actions
-    before_action :find_project, only: [:show]
+    before_action :find_project, only: [:show, :edit, :update]
 
     # Make sure that the Student is authorized before the specified actions
-    before_action :check_authroization, only: [:show]
+    before_action :check_authroization, only: [:show, :edit]
 
     def index
         # Render view 'index' and pass it list of all projects for the current student
@@ -38,6 +38,19 @@ class ProjectsController < ApplicationController
             # If the save failed, Render the 'new' view again
             render :new
         end
+    end
+
+    def edit
+        # Render the 'edit' view and pass it the Project found by ID
+        @project
+    end
+
+    def update
+        # Update the project with the parameters from the 'edit' Form
+        @project.update(project_params)
+
+        # Redirect to the Project 'show' view
+        redirect_to @project
     end
 
     private
