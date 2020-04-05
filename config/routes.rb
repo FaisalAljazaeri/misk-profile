@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   delete 'students/:id/skills', to: 'students#remove_skill', as: :remove_student_skill
   patch 'students/:id/skills', to: 'students#add_skill', as: :add_student_skill
 
+  # Routes for Projects Controller
+  get 'projects', to: 'projects#index', as: :projects
+
   # root path will go to index action on students controller
   root "students#index"
 end
