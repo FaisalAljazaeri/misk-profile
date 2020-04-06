@@ -3,10 +3,18 @@ class StudentsController < ApplicationController
     before_action :authenticate_student!, only: [:edit, :update, :skills, :remove_skill, :add_skill]
     # Find student by ID and save it in @student, for the actions that require it
     before_action :find_student, only: [:show, :edit, :update, :destroy, :skills, :remove_skill, :add_skill]
+    # Check for filters on the Index action and pass students based on filtering criteria
+    before_action :select_students, only: [:index]
 
     def index
-        # Render 'index' view and pass it all students
-        @students = Student.all
+        # Render 'index' view and pass it all skills
+        @skills = Skill.all
+
+        # Select the students based on any filtering criteria
+        @students
+
+        # Pass the selected skills to the view so they can be checked by default
+        @selected_skills
     end
 
     def show
@@ -76,6 +84,24 @@ class StudentsController < ApplicationController
         def student_params
             # Select which parameters of the student model are permitted to be changed
             params.require(:student).permit(:first_name, :last_name, :img, :summary)
+        end
+
+        def select_students
+            # If there are any selected skills, select only the students
+            # who have all the selected skills
+            if params[:skill_ids]
+                # Convert all string skill IDs to integers
+                @selected_skills = params[:skill_ids].map { |id| id.to_i }
+                
+                # Select only the students who have all the specified skills from the params
+                @students = Student.all.select do |st|
+                    @selected_skills.all? { |skill| st.skills.ids.include?(skill) }
+                end
+            else
+                # If no skills were specified, pass an empty array for skills and select all students 
+                @selected_skills = []
+                @students = Student.all
+            end
         end
 
         def check_authroization
