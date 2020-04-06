@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-12 col-sm-8 col-md-6 col-lg-4">
         <h1 class="mb-4"> Editing <%= @project.name %> </h1>
+        <%= render partial: 'error_messages', locals: { project: @project }%>
 
         <%= render partial: 'form', locals: { project: @project, note: '* If no file is chosen, the old image will be used.' } %>
     </div>

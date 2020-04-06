@@ -2,6 +2,8 @@
     <div class="col-12 col-sm-8 col-md-6 col-lg-4">
         <h1 class="mb-4">Create a New Project</h1>
 
+        <%= render partial: 'error_messages', locals: { project: @project }%>
+
         <%= render partial: 'form', locals: { project: @project } %>
     </div>
 </div>

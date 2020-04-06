@@ -47,10 +47,13 @@ class ProjectsController < ApplicationController
 
     def update
         # Update the project with the parameters from the 'edit' Form
-        @project.update(project_params)
-
-        # Redirect to the Project 'show' view
-        redirect_to @project
+        if @project.update(project_params)
+            # If the update was successfully saved in the DB, redirect to the project 'show'
+            redirect_to @project
+        else
+            # In case the update operation wasn't successful, render the 'edit' form again
+            render :edit
+        end
     end
 
     def destroy
