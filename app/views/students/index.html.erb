@@ -2,12 +2,19 @@
     <div class="col-4">
         <div>
             <%= form_tag("/students", method: :get) do %>
+                <div class="form-group">
+                    <%= label_tag :course, 'Course' %>
+                    <%= select_tag :course, options_for_select(Course.all.collect { |c| [ c.abbreviation, c.id ] }.unshift(["All", 0]), @selected_course), class: 'form-control' %>
+                </div>
+
+                <h1>Skills</h1>
                 <% @skills.each do |skill| %>
                     <div class="form-group">
                         <%= label_tag :skill, skill.name %>
-                        <%= check_box_tag 'skill_ids[]', skill.id, @selected_skills.include?(skill.id) %>
+                        <%= check_box_tag 'skill_ids[]', skill.id, @selected_skills.include?(skill.id)%>
                     </div>
                 <% end %>
+
                 <%= submit_tag 'Apply' %>
             <% end %>
         </div>

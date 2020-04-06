@@ -15,6 +15,9 @@ class StudentsController < ApplicationController
 
         # Pass the selected skills to the view so they can be checked by default
         @selected_skills
+
+        # Pass the selected course ID to the view so it can be selected by default
+        @selected_course
     end
 
     def show
@@ -87,20 +90,30 @@ class StudentsController < ApplicationController
         end
 
         def select_students
-            # If there are any selected skills, select only the students
-            # who have all the selected skills
+            # Get the ID of the selected course
+            @selected_course = params[:course].to_i
+
+            # If the course ID is 0, that means that "ALL" courses are included
+            if @selected_course == 0
+                @students = Student.all
+            else
+                # Select only students who belong to the selected course
+                @students = Student.where(course_id: @selected_course).all
+            end
+
+            # If there are any selected skills/course, select only the students
+            # who have all the selected skills and belong to the specified course
             if params[:skill_ids]
                 # Convert all string skill IDs to integers
                 @selected_skills = params[:skill_ids].map { |id| id.to_i }
                 
                 # Select only the students who have all the specified skills from the params
-                @students = Student.all.select do |st|
+                @students = @students.select do |st|
                     @selected_skills.all? { |skill| st.skills.ids.include?(skill) }
                 end
             else
-                # If no skills were specified, pass an empty array for skills and select all students 
+                # If no skills were specified, pass an empty array for skills
                 @selected_skills = []
-                @students = Student.all
             end
         end
 
