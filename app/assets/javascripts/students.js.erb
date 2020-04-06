@@ -10,14 +10,14 @@ $(document).on("turbolinks:load", function () {
 /*
     Handler that will trigger when a skill is deleted from the student's skills.
     It's responsible for moving a deleted skill from the list of student's skills
-    to the list of available skills and changing its link and inner text.
+    to the list of available skills and changing its link and Icon.
 */
 function removeSkill() {
     // Change the method of the link to PATCH and change the class
-    // and inner text.
+    // and link icon.
     $(this).attr("data-method", "patch");
     $(this).removeClass("remove-skill").addClass("add-skill");
-    $(this).text("Add");
+    $(this).find("img").attr("src", "<%= image_path 'add.svg', size: '12' %>");
 
     // Remove the previous 'removeSkill' event handler and replace it with 'addSkill' handler
     $(this).off();
@@ -33,14 +33,14 @@ function removeSkill() {
 /*
     Handler that will trigger when a skill is added to the student's skills.
     It's responsible for moving an added skill from the list of available skills
-    to the list of student's skills and changing its link and inner text.
+    to the list of student's skills and changing its link and Icon.
 */
 function addSkill() {
     // Change the method of the link to DELETE and change the class
-    // and inner text.
+    // and link icon.
     $(this).attr("data-method", "delete");
     $(this).removeClass("add-skill").addClass("remove-skill");
-    $(this).text("Remove");
+    $(this).find('img').attr("src", "<%= image_path 'remove.svg', size: '12' %>");
 
     // Remove the previous 'addSkill' event handler and replace it with 'removeSkill' handler
     $(this).off();
