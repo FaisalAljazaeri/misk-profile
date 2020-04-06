@@ -26,27 +26,27 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :first_name, 'First Name:' %>
+        <%= f.label :first_name, 'First Name' %>
         <%= f.text_field :first_name, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :last_name, 'Last Name:' %>
+        <%= f.label :last_name, 'Last Name' %>
         <%= f.text_field :last_name, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :img, 'Image Url:' %>
-        <%= f.text_field :img, class: 'form-control' %>
+        <%= f.label :avatar, "Avatar" %> <em> ( .jpeg, .png, .jpg ) </em>
+        <%= f.file_field :avatar, class: 'form-control-file' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :course_id, 'Course:' %>
+        <%= f.label :course_id, 'Course' %>
         <%= f.select :course_id, Course.all.collect { |c| [ c.abbreviation, c.id ] }, { include_blank: true }, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :summary, 'Summary:' %>
+        <%= f.label :summary, 'Summary' %>
         <%= f.text_area :summary, cols: 50, rows: 7, class: 'form-control' %>
       </div>
 
