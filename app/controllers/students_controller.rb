@@ -86,7 +86,7 @@ class StudentsController < ApplicationController
 
         def student_params
             # Select which parameters of the student model are permitted to be changed
-            params.require(:student).permit(:first_name, :last_name, :img, :summary)
+            params.require(:student).permit(:first_name, :last_name, :avatar, :summary)
         end
 
         def select_students
