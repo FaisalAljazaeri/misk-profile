@@ -13,8 +13,8 @@ class Student < ApplicationRecord
   # Validation for the Student avatar
   validates :avatar, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
   
-  has_many :student_skills
+  has_many :student_skills, dependent: :destroy
   has_many :skills, through: :student_skills
   belongs_to :course
-  has_many :projects
+  has_many :projects, dependent: :destroy
 end
