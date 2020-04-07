@@ -2,6 +2,16 @@
     <%= image_tag @student.avatar, size: '120', alt: @student.first_name %>
 </div>
 
+<%= link_to @student.linkedin_link, target: '_blank' do %>
+    <%= image_tag 'linkedin.svg', size: '25' %>
+<% end %>
+
+<% if @student.github_link.present? %>
+    <%= link_to @student.github_link, target: '_blank' do %>
+        <%= image_tag 'github.svg', size: '25' %>
+    <% end %>
+<% end %>
+
 <div>
     Full Name: <%= @student.first_name %> <%= @student.last_name %>
 </div>
