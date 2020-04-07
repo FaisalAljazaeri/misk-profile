@@ -9,7 +9,7 @@
 
                 <h3>Skills</h3>
                 <div class="skills-filter mb-2 border">
-                    <% @skills.each do |skill| %>
+                    <% @skills.order(:name).each do |skill| %>
                         <div class="form-check">
                             <%= check_box_tag 'skill_ids[]', skill.id, @selected_skills.include?(skill.id), class: 'form-check-input' %>
                             <%= label_tag :skill, skill.name, style: 'font-size: 14px;', class: 'form-check-label' %>

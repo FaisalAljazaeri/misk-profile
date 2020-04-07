@@ -3,7 +3,7 @@
         <h2>My Skills</h2>
 
         <div class="border skills-section" id="student-skills">
-            <% @selected_skills.each do |skill| %>
+            <% @selected_skills.sort_by{ |skill| skill.name }.each do |skill| %>
             <p> 
                 <%= skill.name %> <%= link_to remove_student_skill_path(:skill_id => skill.id), method: :delete, remote: true, class: 'remove-skill' do %>
                     <%= image_tag 'remove.svg', size: '12' %> 
@@ -17,7 +17,7 @@
         <h2>Available Skills</h2>
 
         <div class="border skills-section" id="available-skills">
-            <% @unselected_skills.each do |skill| %>
+            <% @unselected_skills.sort_by{ |skill| skill.name }.each do |skill| %>
             <p>
                 <%= skill.name %> <%= link_to add_student_skill_path(:skill_id => skill.id), method: :patch, remote: true, class: 'add-skill' do %>
                     <%= image_tag 'add.svg', size: '12' %>
