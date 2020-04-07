@@ -69,3 +69,6 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 
 # For uploaded files validation
 gem 'active_storage_validations'
+
+# For admin 
+gem 'activeadmin'
