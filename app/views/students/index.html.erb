@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-12 col-md-2">
+    <div class="col-12 col-md-2 mb-4">
         <div>
             <%= form_tag("/students", method: :get) do %>
                 <div class="form-group" style="max-width: 250px">
@@ -8,7 +8,7 @@
                 </div>
 
                 <h3>Skills</h3>
-                <div class="skills-filter mb-4 border">
+                <div class="skills-filter mb-2 border">
                     <% @skills.each do |skill| %>
                         <div class="form-check">
                             <%= check_box_tag 'skill_ids[]', skill.id, @selected_skills.include?(skill.id), class: 'form-check-input' %>
