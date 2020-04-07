@@ -8,14 +8,16 @@
                 </div>
 
                 <h3>Skills</h3>
-                <% @skills.each do |skill| %>
-                    <div class="form-group">
-                        <%= label_tag :skill, skill.name, style: 'font-size: 14px;' %>
-                        <%= check_box_tag 'skill_ids[]', skill.id, @selected_skills.include?(skill.id)%>
-                    </div>
-                <% end %>
+                <div class="skills-filter mb-4 border">
+                    <% @skills.each do |skill| %>
+                        <div class="form-check">
+                            <%= check_box_tag 'skill_ids[]', skill.id, @selected_skills.include?(skill.id), class: 'form-check-input' %>
+                            <%= label_tag :skill, skill.name, style: 'font-size: 14px;', class: 'form-check-label' %>
+                        </div>
+                    <% end %>
+                </div>
 
-                <%= submit_tag 'Apply', class: 'mb-4' %>
+                <%= submit_tag 'Apply', class: 'mb-4', class: 'btn btn-primary' %>
             <% end %>
         </div>
     </div>

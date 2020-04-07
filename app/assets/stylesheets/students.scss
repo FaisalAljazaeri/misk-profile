@@ -41,3 +41,11 @@
     border: 0.1rem solid #666;
     border-radius: 5px;
 }
+
+.skills-filter {
+    max-width: 250px;
+    height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 10px;
+}
