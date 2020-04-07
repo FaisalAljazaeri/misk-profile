@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
     private
         def project_params
             # Select which parameters of the Project model are permitted to be changed
-            params.require(:project).permit(:name, :description, :project_img, :link)
+            params.require(:project).permit(:name, :description, :project_img, :link, :github_link)
         end
 
         def find_project

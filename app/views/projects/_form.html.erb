@@ -22,5 +22,10 @@
     <%= form.text_field :link, class: 'form-control' %>
 </div>
 
+<div class="form-group">
+    <%= form.label :github_link, 'GitHub Repository' %> <small>(Optional)</small>
+    <%= form.text_field :github_link, class: 'form-control' %>
+</div>
+
 <%= form.submit class: 'btn btn-primary' %>
 <% end %>
