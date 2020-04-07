@@ -1,44 +1,55 @@
 <div class="row">
-    <div class="col-4">
+    <div class="col-12 col-md-2">
         <div>
             <%= form_tag("/students", method: :get) do %>
-                <div class="form-group">
-                    <%= label_tag :course, 'Course' %>
+                <div class="form-group" style="max-width: 250px">
+                    <h3> <%= label_tag :course, 'Course' %> </h3>
                     <%= select_tag :course, options_for_select(Course.all.collect { |c| [ c.abbreviation, c.id ] }.unshift(["All", 0]), @selected_course), class: 'form-control' %>
                 </div>
 
-                <h1>Skills</h1>
+                <h3>Skills</h3>
                 <% @skills.each do |skill| %>
                     <div class="form-group">
-                        <%= label_tag :skill, skill.name %>
+                        <%= label_tag :skill, skill.name, style: 'font-size: 14px;' %>
                         <%= check_box_tag 'skill_ids[]', skill.id, @selected_skills.include?(skill.id)%>
                     </div>
                 <% end %>
 
-                <%= submit_tag 'Apply' %>
+                <%= submit_tag 'Apply', class: 'mb-4' %>
             <% end %>
         </div>
     </div>
 
-    <div class="col-8">
+    <div class="col-12 col-md-10 offset-xl-2 col-xl-6">
         <% @students.each do |student| %>
-            <div>
-                <%= image_tag student.avatar, size: '90', alt: student.first_name %>
-            </div>
+            <div class="card mb-3">
+                <div class="row m-0">
+                    <div class="col-4 p-0">
+                        <%= image_tag student.avatar, alt: student.first_name, class: 'card-img-top student-index-img' %>
+                    </div>
+                    
+                    <div class="col-8 text-center mt-2 p-2">
+                        <h3 class="card-title"> <%= student.first_name %> <%= student.last_name %> </h3>
 
-            <div>
-                Full Name: <%= student.first_name %> <%= student.last_name %>
-            </div>
+                        <div>
+                            <h4> Course </h4>
+                            <p class="card-text"> <%= student.course.title %> </p>
+                        </div>
 
-            <div>
-                Course: <%= student.course.title %>.
-            </div>
+                        <div class="mb-2 mt-2">
+                            <h4> Skills </h4>
+                            <p class="card-text"> <%= student.skills.map { |skill| skill.name }.join(', ') %>. </p>
+                        </div>
+                    </div>
+                </div>
 
-            <div>
-                Skills: <%= student.skills.map { |skill| skill.name }.join(', ') %>.
-            </div>
+                <div class="p-2">
+                    <h4> Summary </h4>
+                    <p class="card-text"> <%= student.summary %> </p>
+                </div>
 
-            <%= link_to 'View Profile', student %>
+                <%= link_to 'View Profile', student, class: 'p-2' %>
+            </div>
         <% end %>
     </div>
 </div>
