@@ -1,8 +1,23 @@
-<div>
-    <h4> <%= @project.name %> </h4>
-    <p> <%= @project.description %> </p>
-    <%= image_tag @project.project_img, size: '250', alt: @project.name %>
-    <%= link_to "Check it out!", @project.link, target: "_blank" %>
+<div class="row project-card mb-4 mx-2 p-2">
+    <div class="col-12 text-center mt-2">
+        <h4> <%= @project.name %> </h4>
+
+        <%= link_to @project.link, target: '_blank' do %>
+            <%= image_tag 'world-wide-web.svg', size: '20' %>
+        <% end %>
+
+        <% if @project.github_link.present? %>
+            <%= link_to @project.github_link, target: '_blank' do %>
+                <%= image_tag 'github.svg', size: '25' %>
+            <% end %>
+        <% end %>
+            
+        <p class="mt-2"> <%= @project.description %> </p>
+    </div>
+    
+    <div class="col-12 text-center">
+        <%= image_tag @project.project_img, size: '500', alt: @project.name %>
+    </div>
 
     <div class="mt-4">
         <%= link_to 'Edit', edit_project_path, class: 'btn btn-primary' %>
