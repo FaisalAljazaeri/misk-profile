@@ -72,3 +72,6 @@ gem 'active_storage_validations'
 
 # For admin 
 gem 'activeadmin'
+
+# Pagination Gem
+gem 'will_paginate'

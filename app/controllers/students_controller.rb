@@ -1,4 +1,7 @@
 class StudentsController < ApplicationController
+    # Require Pagination Functionality
+    require 'will_paginate/array'
+
     # Check if a Student is authenticated before these actions
     before_action :authenticate_student!, only: [:edit, :update, :skills, :remove_skill, :add_skill]
     # Find student by ID and save it in @student, for the actions that require it
@@ -11,7 +14,7 @@ class StudentsController < ApplicationController
         @skills = Skill.all
 
         # Select the students based on any filtering criteria
-        @students
+        @students = @students.paginate(page: params[:page], per_page: 2)
 
         # Pass the selected skills to the view so they can be checked by default
         @selected_skills
