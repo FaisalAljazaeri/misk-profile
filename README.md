@@ -28,6 +28,15 @@ The Entity-Relationship Diagram for this project can found [here](https://www.lu
 
 ![ERD](ERD.JPG)
 
+## Technologies Used
+
+* Ruby on Rails.
+* HTML, CSS and JavaScript.
+* PostgreSQL
+* Jquery.
+* Bootstrap.
+* Devise.
+
 ## Future Directions
 
 * Improve styling.
