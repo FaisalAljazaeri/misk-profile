@@ -75,3 +75,7 @@ gem 'activeadmin'
 
 # Pagination Gem
 gem 'will_paginate'
+
+# AWS 
+gem "aws-sdk-s3", require: false
+gem 'mini_magick', '~> 4.8'
